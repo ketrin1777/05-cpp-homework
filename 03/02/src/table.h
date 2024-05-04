@@ -20,10 +20,14 @@ public:
     }
     ~table()
     {
-        for (size_t j = 0; j < row_; j++)
+        if (row_ > 0)
         {
-            delete[] elements[j];
+            for (size_t j = 0; j < row_; j++)
+            {
+                delete[] elements[j];
+            }
         }
+
         delete[] elements;
     };
 
@@ -37,4 +41,8 @@ private:
     T **elements = nullptr;
     int row_ = 0;
     int col_ = 0;
+
+    // Запрет копирования
+    table(table const & );
+    table& operator=(table const &);
 };

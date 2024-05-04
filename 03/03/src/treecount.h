@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-
+#include <algorithm>
 
 template <class T>
 class TreeCount
@@ -10,42 +10,19 @@ public:
     TreeCount(T){};
     // ~Tree();
 
-    void operator()(std::vector<T> &val) { val_ = val; };
+    void operator()(T &val) { summ_ += val; count_++;};
 
-    int get_sum()
+    T get_sum()
     {
-        T res = 0;
-        if (!val_.empty())
-        {
-            for (const T &item : val_)
-            {
-                if (item % 3 == 0)
-                {
-                    res = res + item;
-                }
-            }
-        }
-
-        return res;
+        return summ_;
     };
 
-    int get_count()
+    size_t get_count()
     {
-        T res = 0;
-        if (!val_.empty())
-        {
-            for (const T &item : val_)
-            {
-                if (item % 3 == 0)
-                {
-                    res++;
-                }
-            }
-        }
-
-        return res;
+        return count_;
     };
 
 protected:
-    std::vector<T> val_;
+    size_t count_{};
+    T summ_{};
 };

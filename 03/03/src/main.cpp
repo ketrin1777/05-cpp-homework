@@ -22,9 +22,9 @@ int main()
     print(vIn);
 
     TreeCount tree(vIn[0]);
-    tree(vIn);
+    tree = std::for_each(vIn.begin(), vIn.end(), tree);
 
     std::cout << "[OUT]: get_sum() = " << tree.get_sum() << std::endl;
 
-    std::cout << "[OUT]: get_count() = " << tree.get_count();
+    std::cout << "[OUT]: get_count() = " << tree.get_count() << std::endl;
 }

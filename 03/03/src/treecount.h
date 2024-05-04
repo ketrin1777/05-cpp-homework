@@ -10,14 +10,21 @@ public:
     TreeCount(T){};
     // ~Tree();
 
-    void operator()(T &val) { summ_ += val; count_++;};
+    void operator()(T &val)
+    {
+        if (val % 3 == 0)
+        {
+            summ_ += val;
+            count_++;
+        }
+    };
 
-    T get_sum()
+    int get_sum()
     {
         return summ_;
     };
 
-    size_t get_count()
+    int get_count()
     {
         return count_;
     };
